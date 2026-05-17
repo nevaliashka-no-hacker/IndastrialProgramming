@@ -1,10 +1,10 @@
 #include "generate.hpp"
 #include <iostream>
 
-int main() {
+int main(std::string filename) {
 	
 	std::string code = "hello";
-	generate(code);
+	generate(code, filename);
 
 
 	char n;
