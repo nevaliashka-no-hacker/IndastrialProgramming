@@ -1,13 +1,33 @@
 #include "generate.hpp"
+#include "logger.h"
 #include <iostream>
+#include <string>
 
-int main(std::string filename) {
-	
-	std::string code = "hello";
-	generate(code, filename);
+int main(int argc, char* argv[]) {
 
+    if (argc > 1) {
+        // первый аргумент - файл для логов
+        log_init(argv[1]);  
+    } else {
+        // без аргументов - консоль
+        log_init();         
+    }
 
-	char n;
-	std::cin >> n;
-	return 0;
+	std::string info;
+	std::cout << "What will be stored the barcode? ";
+	std::getline(std::cin, info);
+    
+    std::string path;
+    //std::cout << "Введите путь к текстовому файлу: ";
+    std::cout << "Enter file for barcode: ";
+    std::getline(std::cin, path);
+
+    if (path.empty()) {
+        //log_message(ERROR, "Путь не указан");
+        log_message(ERROR, "Path not specified");
+        return 1;
+    }
+
+	generate(info, path);
+    return 0;
 }
