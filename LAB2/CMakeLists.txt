@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.28.3)
+project(BarcodeGenerator)
+find_package(ZXing REQUIRED)
+find_package(OpenCV REQUIRED)
+add_executable(go main.cpp generate.cpp generate.hpp)
+target_link_libraries(go ZXing::ZXing ${OpenCV_LIBS})
