@@ -35,13 +35,18 @@ void generate(std::string data, std::string filename) {
             }
         }
 		
-		// сохраняем получившееся изображение в файлик
-		cv::imwrite(filename + ".png", barcodeImage);
-		std::cout << "The barcode has been successfully created in file " << outputFilename << std::endl;
-
-		// Опционально: показать изображение в окне
-		// cv::imshow("Сгенерированный штрихкод", barcodeImage);
-		// cv::waitKey(0);
+		if (!filename.empty())
+		{
+			// сохраняем получившееся изображение в файлик
+			cv::imwrite(filename + ".png", barcodeImage);
+			std::cout << "The barcode has been successfully created in file " << outputFilename << std::endl;
+		}
+		else
+		{
+			// показать изображение в окне
+			cv::imshow("Сгенерированный штрихкод", barcodeImage);
+			cv::waitKey(0);
+		}
 
 
 	} catch (const std::exception& e) {
