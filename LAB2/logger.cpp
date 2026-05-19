@@ -22,7 +22,6 @@ void log_init(const std::string& filename) {
             log_message(ERROR, "No open" + filename);
         }
     }
-
 }
 
 void log_message(LogLevel level, const std::string& message) {

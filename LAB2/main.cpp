@@ -16,6 +16,7 @@ int main(int argc, char* argv[]) {
 	std::string info;
 	std::cout << "What will be stored the barcode? ";
 	std::getline(std::cin, info);
+    std::cout << std::endl;
     
     std::string path;
     //std::cout << "Введите путь к текстовому файлу: ";
