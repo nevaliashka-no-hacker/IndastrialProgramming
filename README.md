@@ -6,5 +6,6 @@ chmod +x .git/hooks/pre-commit
 
 Команды по исправлению стиля:
 clang-format -i *.cpp *.hpp
+clang-tidy *.cpp --fix -- -std=c++17
 
 (для проверки) cppcheck --enable=all
