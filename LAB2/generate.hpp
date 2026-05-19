@@ -7,6 +7,6 @@
 #include <ZXing/BitMatrix.h>
 #include <ZXing/CharacterSet.h>
 
-void generate(std::string data);
+void generate(std::string data, std::string filename = "");
 
 #endif //GENERATE
