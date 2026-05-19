@@ -1,24 +1,18 @@
-#include "logger.h"
+#include "logger.hpp"
 
 bool is_open_file = false;
 std::ofstream log_file;
 
 void log_init(const std::string& filename) {
-    if (filename[0] == '\0')
-    {
+    if (filename[0] == '\0') {
         log_message(INFO, "No file for logging. Logging to console");
         is_open_file = false;
-    }
-    else
-    {
+    } else {
         log_file.open(filename, std::ios::out | std::ios::app);
-        if (log_file.is_open())
-        {
+        if (log_file.is_open()) {
             is_open_file = true;
             log_message(INFO, "Logging to file");
-        }
-        else
-        {
+        } else {
             log_message(ERROR, "No open" + filename);
         }
     }
@@ -26,8 +20,7 @@ void log_init(const std::string& filename) {
 
 void log_message(LogLevel level, const std::string& message) {
     std::string level_str;
-    switch (level)
-    {
+    switch (level) {
         case LogLevel::INFO:
             level_str = "INFO";
             break;
@@ -47,12 +40,9 @@ void log_message(LogLevel level, const std::string& message) {
     char time_buf[20];
     std::strftime(time_buf, sizeof(time_buf), "%Y-%m-%d %H:%M:%S", t);
 
-    if (is_open_file)
-    {
-        log_file << time_buf << ": " << level_str << ': ' << message << std::endl;
-    }
-    else
-    {
+    if (is_open_file) {
+        log_file << time_buf << ": " << level_str << ": " << message << std::endl;
+    } else {
         std::cout << time_buf << " " << level_str << ' ' << message << std::endl;
     }
 }
